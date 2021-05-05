@@ -1,14 +1,13 @@
-import React, { useStates } from "react";
+import React, { useState } from "react";
 import "./Weather.css";
 import axios from "axios";
 
 export default function Weather() {
-  let [weatherData, setWeatherData] = useStates({ ready: false });
+  const [weatherData, setWeatherData] = useState({ ready: false });
 
   function handleResponse(response) {
-    console.log(response.data);
-
     setWeatherData({
+      ready: true,
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
       city: response.data.name,
@@ -16,7 +15,6 @@ export default function Weather() {
       description: response.data.weather[0].description,
       iconUrl: "https://ssl.gstatic.com/onebox/weather/64/cloudy.png",
       date: "Monday 07:00",
-      ready: true,
     });
   }
 
@@ -73,10 +71,11 @@ export default function Weather() {
       </div>
     );
   } else {
-    let apiKey = "641aea60f164eb7376c34eaed6daea65";
+    const apiKey = "641aea60f164eb7376c34eaed6daea65";
     let city = "Munich";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
+
     return "Loading...";
   }
 }
