@@ -51,7 +51,7 @@ export default function Weather(props) {
             <div className="col-3">
               <input
                 type="Submit"
-                value="Search"
+                defaultValue="Search"
                 className="btn btn-primary w-100" //defined button from bootstrap //w-100 = 100% width
               />
             </div>
