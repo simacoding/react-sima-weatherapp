@@ -11,6 +11,7 @@ export default function App() {
           <a
             href="https://github.com/simacoding/react-sima-weatherapp"
             target="_blank"
+            rel="noreferrer"
           >
             open-sourced
           </a>
